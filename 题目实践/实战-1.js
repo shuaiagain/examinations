@@ -81,16 +81,85 @@ var c = [1, 2, 3];
 var d = c.filter((item, index) => {
     if (item == 2 || index == 2)
         return item;
-}); 
+});
 
 // 5.Array.prototype.push/Array.prototype.pop()/Array.prototype.shift()/Array.prototype.unshift()
-var a=[1,2,3].pop();
+var a = [1, 2, 3].pop();
 // [1,2]
 a.push(3);
 //[1,2,3]
 
-var b=[1,2,3];
+var b = [1, 2, 3];
 b.shift();
 //[2,3]
 b.unshift(1);
-// [1,2,3   ]
+// [1,2,3]
+// 通过push和pop模仿栈操作，通过unshift和pop模拟队列操作
+//通过上述技术实现栈
+function Stack() {
+
+    var items = [];
+    this.push = function (element) {
+        items.push(element);
+    }
+
+    this.pop = function () {
+        return items.pop();
+    }
+
+    this.peek = function () {
+        return items[items.length - 1];
+    }
+
+    this.isEmpty = function () {
+        return items.length == 0;
+    }
+
+    this.clear = function () {
+        items = [];
+    }
+
+    this.print = function () {
+        console.log(items.toString());
+    }
+}
+
+var a = new Stack();
+a.push(1);
+a.push(2);
+a.pop();
+
+//通过上述技术实队列
+function Queue() {
+
+    var items = [];
+    this.queueUnshift = function (element) {
+        items.unshift(element);
+    }
+
+    this.queueShift = function () {
+        return items.pop();
+    }
+
+    this.peek = function () {
+        return items[0];
+    }
+
+    this.isEmpty = function () {
+        return items.length == 0;
+    }
+
+    this.clear = function () {
+        items = [];
+    }
+
+    this.print = function () {
+        console.log(items.toString());
+    }
+}
+
+var qq = new Queue();
+qq.queueUnshift(1);
+qq.queueUnshift(2);
+qq.queueUnshift(3);
+
